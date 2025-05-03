@@ -31,7 +31,7 @@
                     <div class="mb-6">
                         <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
                         <input type="password" id="password" name="password" placeholder="Masukkan password Anda" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none" required>
-                        </div>
+                    </div>
     
                     <button type="submit" class="w-full bg-green-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-700 smooth-hover focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
                         Login
@@ -115,9 +115,21 @@
                             <input type="number" id="weight" name="weight" min="0" placeholder="Contoh: 65" min="1" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none">
                         </div>
 
-                        <div>
-                            <label for="height" class="block text-sm font-medium text-gray-600 mb-1">Tinggi Badan (cm)</label>
-                            <input type="number" id="height" name="height" min="0" placeholder="Contoh: 170" min="1" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="flex-1">
+                                <label for="height" class="block text-sm font-medium text-gray-600 mb-1">Tinggi Badan Manual (cm)</label>
+                                <input type="number" id="height" name="height" min="0" placeholder="Contoh: 170" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none">
+                            </div>
+                            
+                            <div class="flex-1">
+                                <label for="height_auto" class="block text-sm font-medium text-gray-600 mb-1">Tinggi Badan Otomatis (cm)</label>
+                                <div class="flex gap-2">
+                                    <input type="number" id="height_auto" disabled min="0" max="300" placeholder="Menunggu data sensor..." class="w-full px-4 py-2 border bg-gray-100 border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none">
+                                    <button type="button" id="lockHeight" class="bg-blue-500 hover:bg-blue-600 text-white px-4 rounded-md">
+                                        <i class="fas fa-lock"></i> Lock
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="pt-4" id="submit-buttons">
@@ -157,7 +169,32 @@
         <?php require_once($FRAGMENT_DIR . 'footer.php') ?>
     </body>
 <?php endif; ?>
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script>
+    const client = mqtt.connect('ws://localhost:8083/mqtt')
+    
+    client.on('connect', function () {
+        console.log('Connected to MQTT broker');
+        client.subscribe('height_meter', function (err) {
+            if (!err) {
+                console.log('Subscribed to topic: height_meter');
+            }
+        });
+    });
 
+    client.on('message', function (topic, message) {
+        if (topic === 'height_meter') {
+            const heightAuto = document.getElementById('height_auto');
+            heightAuto.value = message.toString();
+        }
+    });
+
+    document.getElementById('lockHeight').addEventListener('click', function() {
+        const heightAuto = document.getElementById('height_auto');
+        const heightManual = document.getElementById('height');
+        heightManual.value = heightAuto.value;
+    });
+</script>
 <script>
     function editMode(mode, userId = null) {
         // Update URL without page reload
