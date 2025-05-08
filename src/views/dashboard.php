@@ -169,9 +169,9 @@
         <?php require_once($FRAGMENT_DIR . 'footer.php') ?>
     </body>
 <?php endif; ?>
-<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script src="/public/assets/mqtt.js"></script>
 <script>
-    const client = mqtt.connect('ws://localhost:8083/mqtt')
+    const client = mqtt.connect('ws://192.168.20.254:8083/mqtt')
     
     client.on('connect', function () {
         console.log('Connected to MQTT broker');
@@ -185,7 +185,7 @@
     client.on('message', function (topic, message) {
         if (topic === 'height_meter') {
             const heightAuto = document.getElementById('height_auto');
-            heightAuto.value = message.toString();
+            heightAuto.value = 200 - message.toString();
         }
     });
 

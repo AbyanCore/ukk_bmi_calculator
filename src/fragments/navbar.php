@@ -5,7 +5,7 @@
         <div class="hidden md:flex space-x-6 items-center">
             <a href="dashboard" class="text-gray-600 hover:text-green-600 smooth-hover">Dashboard</a>
             <a href="galery" class="text-gray-600 hover:text-green-600 smooth-hover">Galeri</a>
-            <a href="docs" class="text-gray-600 hover:text-green-600 smooth-hover">Panduan</a>
+            <a href="/public/assets/guide.pdf" class="text-gray-600 hover:text-green-600 smooth-hover">Panduan</a>
             <a href="#hitung" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 smooth-hover">Hitung BMI</a>
         </div>
 
@@ -19,9 +19,9 @@
     </nav>
 
     <div id="mobile-menu" class="md:hidden hidden bg-white pb-4">
-        <a href="dashboard" class="block px-6 py-2 text-gray-600 hover:bg-green-100">Dashboard</a>
-        <a href="galery" class="block px-6 py-2 text-gray-600 hover:bg-green-100">Galeri</a>
-        <a href="docs" class="block px-6 py-2 text-gray-600 hover:bg-green-100">Panduan</a>
+        <a href="dashboard" class="text-gray-600 hover:text-green-600 smooth-hover">Dashboard</a>
+        <a href="galery" class="text-gray-600 hover:text-green-600 smooth-hover">Galeri</a>
+        <a href="/public/assets/guide.pdf" class="text-gray-600 hover:text-green-600 smooth-hover">Panduan</a>
         <a href="#hitung" class="block mx-6 my-2 text-center bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 smooth-hover">Hitung BMI</a>
     </div>
 </header>

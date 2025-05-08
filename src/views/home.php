@@ -23,17 +23,17 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-green-800 mb-12">Mengapa Berat Badan Ideal Penting?</h2>
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="bg-green-50 p-6 rounded-lg shadow-lg text-center border border-green-200">
-                        <img src="https://placehold.co/100x100/a7f3d0/14532d?text=Kesehatan" alt="[Image of Ilustrasi Kesehatan Jantung]" class="mx-auto mb-4 rounded-full" onerror="this.src='https://placehold.co/100x100/cccccc/ffffff?text=Error'">
+                        <img src="/public/image/jantung.jpg" alt="[Image of Ilustrasi Kesehatan Jantung]" class="mx-auto mb-4 rounded-full" >
                         <h3 class="text-xl font-semibold text-green-700 mb-2">Kesehatan Jantung</h3>
                         <p class="text-gray-600">Menjaga berat badan ideal dapat mengurangi risiko penyakit jantung dan tekanan darah tinggi.</p>
                     </div>
                     <div class="bg-green-50 p-6 rounded-lg shadow-lg text-center border border-green-200">
-                        <img src="https://placehold.co/100x100/a7f3d0/14532d?text=Energi" alt="[Image of Ilustrasi Tingkat Energi]" class="mx-auto mb-4 rounded-full" onerror="this.src='https://placehold.co/100x100/cccccc/ffffff?text=Error'">
+                        <img src="/public/image/energi.jpg" alt="[Image of Ilustrasi Tingkat Energi]" class="mx-auto mb-4 rounded-full" >
                         <h3 class="text-xl font-semibold text-green-700 mb-2">Tingkat Energi</h3>
                         <p class="text-gray-600">Berat badan yang sehat seringkali berkorelasi dengan tingkat energi yang lebih tinggi dan stamina yang lebih baik.</p>
                     </div>
                     <div class="bg-green-50 p-6 rounded-lg shadow-lg text-center border border-green-200">
-                         <img src="https://placehold.co/100x100/a7f3d0/14532d?text=Mental" alt="[Image of Ilustrasi Kesejahteraan Mental]" class="mx-auto mb-4 rounded-full" onerror="this.src='https://placehold.co/100x100/cccccc/ffffff?text=Error'">
+                         <img src="/public/image/mental.jpg" alt="[Image of Ilustrasi Kesejahteraan Mental]" class="mx-auto mb-4 rounded-full" >
                         <h3 class="text-xl font-semibold text-green-700 mb-2">Kesejahteraan Mental</h3>
                         <p class="text-gray-600">Merasa nyaman dengan tubuh Anda dapat meningkatkan kepercayaan diri dan kesehatan mental secara keseluruhan.</p>
                     </div>
@@ -75,28 +75,28 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-green-800 mb-12">Galeri Inspirasi Sehat</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="bg-green-50 rounded-lg shadow-md overflow-hidden border border-green-100">
-                        <img src="https://placehold.co/600x400/a7f3d0/14532d?text=Nutrisi" alt="[Image of Piring makanan seimbang]" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/cccccc/ffffff?text=Error'">
+                        <img src="/public/image/makanan.jpg" alt="[Image of Piring makanan seimbang]" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h3 class="font-semibold text-lg text-green-700 mb-1">Nutrisi Seimbang</h3>
                             <p class="text-sm text-gray-600">Penuhi piring Anda dengan warna-warni dari alam.</p>
                         </div>
                     </div>
                     <div class="bg-green-50 rounded-lg shadow-md overflow-hidden border border-green-100">
-                        <img src="https://placehold.co/600x400/86efac/14532d?text=Aktivitas" alt="[Image of Orang berolahraga di luar]" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/cccccc/ffffff?text=Error'">
+                        <img src="/public/image/lari.jpg" alt="[Image of Orang berolahraga di luar]" class="w-full h-48 object-cover" >
                         <div class="p-4">
                             <h3 class="font-semibold text-lg text-green-700 mb-1">Gerak Aktif</h3>
                             <p class="text-sm text-gray-600">Temukan aktivitas fisik yang Anda nikmati setiap hari.</p>
                         </div>
                     </div>
                     <div class="bg-green-50 rounded-lg shadow-md overflow-hidden border border-green-100">
-                        <img src="https://placehold.co/600x400/4ade80/166534?text=Hidrasi+Alami" alt="[Image of Gelas air dengan irisan lemon]" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/cccccc/ffffff?text=Error'">
+                        <img src="/public/image/lemon.jpg" alt="[Image of Gelas air dengan irisan lemon]" class="w-full h-48 object-cover" >
                         <div class="p-4">
                             <h3 class="font-semibold text-lg text-green-700 mb-1">Hidrasi Cukup</h3>
                             <p class="text-sm text-gray-600">Air adalah kunci vitalitas dan metabolisme tubuh.</p>
                         </div>
                     </div>
                     <div class="bg-green-50 rounded-lg shadow-md overflow-hidden border border-green-100">
-                        <img src="https://placehold.co/600x400/22c55e/166534?text=Relaksasi" alt="[Image of Orang bermeditasi dengan tenang]" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/cccccc/ffffff?text=Error'">
+                        <img src="/public/image/meditasi.jpg" alt="[Image of Orang bermeditasi dengan tenang]" class="w-full h-48 object-cover" >
                         <div class="p-4">
                             <h3 class="font-semibold text-lg text-green-700 mb-1">Istirahat & Relaksasi</h3>
                             <p class="text-sm text-gray-600">Berikan waktu bagi tubuh dan pikiran untuk pulih.</p>
