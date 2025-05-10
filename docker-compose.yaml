@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # PHP Application Service
+  php-app:
+    build:
+      context: . # Current directory as build context
+      dockerfile: Dockerfile # Dockerfile to be used
+    ports:
+      - "8080:80" # Map port 8080 on host to port 80 in PHP container (Apache)
+    volumes:
+      # This volume maps your source code into the container for development.
+      # Changes to local code will be instantly reflected in the container without rebuilding.
+      # Adjust according to your Dockerfile and application structure.
+      - ./index.php:/var/www/html/index.php
+      - ./public:/var/www/html/public
+      - ./src:/var/www/src # src will be mounted at /var/www/src
+      # If uploads directory exists in public and needs persistence or initial data:
+      # - ./public/uploads:/var/www/html/public/uploads
+    depends_on:
+      - db # Indicates that php-app service depends on db service (MySQL)
+      - emqx # Indicates that php-app service depends on emqx service (EMQX)
+    environment:
+      # You can add other PHP environment variables here
+      # Example: variables for EMQX connection
+      EMQX_HOST: emqx # EMQX service name
+      EMQX_PORT: 1883
+
+  # MySQL Database Service
+  db:
+    image: mysql:8.0 # Using official MySQL 8.0 image (you can switch to other versions, e.g., 5.7)
+    ports:
+      # Map port 33069 on host to port 3306 (MySQL default port) in container.
+      # This avoids conflicts if you have local MySQL running on port 3306.
+      - "33069:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: letmein # CHANGE THIS PASSWORD!
+      MYSQL_DATABASE: ukk_bmi_db # Database to be created when container first starts
+    volumes:
+      - mysql_data:/var/lib/mysql # Volume for persistent MySQL data storage
+      - ./mysql-init-scripts:/docker-entrypoint-initdb.d # SQL scripts for database initialization (if any)
+    # To ensure MySQL is ready before application tries to connect,
+    # You can add healthcheck (optional, but recommended for production)
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # EMQX MQTT Broker Service
+  emqx:
+    image: emqx/emqx:latest # Using official EMQX image (you can specify version, e.g., emqx/emqx:5.1.0)
+    ports:
+      - "1883:1883"   # Default MQTT port
+      - "8083:8083"   # MQTT over WebSockets port
+      - "8883:8883"   # Default MQTT over SSL/TLS port (MQTTS)
+      - "8084:8084"   # MQTT over WebSockets Secure port
+      - "18083:18083" # EMQX Dashboard port (access via http://localhost:18083)
+    volumes:
+      - emqx_data:/opt/emqx/data # Volume for EMQX data
+      - emqx_log:/opt/emqx/log   # Volume for EMQX logs
+
+# Volume definitions used by services
+volumes:
+  mysql_data: # Volume for MySQL data
+  emqx_data:  # Volume for EMQX data
+  emqx_log:   # Volume for EMQX logs
+
+# Network definitions used by services
+networks:
+  app-network:
+    driver: bridge # Using default bridge driver for custom network

@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Jangan rewrite jika request adalah untuk file yang sudah ada secara fisik
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Jangan rewrite jika request adalah untuk direktori yang sudah ada secara fisik
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Rewrite semua request lainnya ke index.php
+  # Opsi [QSA] (Query String Append) akan memastikan parameter query string asli tetap ada.
+  RewriteRule . index.php [L,QSA]
+</IfModule>

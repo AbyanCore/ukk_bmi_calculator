@@ -9,7 +9,6 @@ $req = explode("?", $_SERVER["REQUEST_URI"])[0];
 $route = trim($req, '/');
 $filePath = $VIEW_DIR . ($route === '' ? 'home' : $route) . '.php';
 
-
 if (strpos($route, 'action/') === 0) {
     header('Content-Type: application/json; charset=utf-8');
     require_once($filePath);
